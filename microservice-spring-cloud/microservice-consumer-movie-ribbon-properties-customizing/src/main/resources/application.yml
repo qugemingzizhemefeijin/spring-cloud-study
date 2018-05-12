@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: microservice-consumer-movie-ribbon-properties-customizing
+server:
+  port: 8010
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+management:
+  security:
+    enabled: false #关闭actuator验证
+#如果是需要访问多个微服物，并且服务的请求逻辑不一样，建议是配置文件来配置，这样不会涉及到java代码的全局规则的问题了
+microservice-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #相应时间加权规则

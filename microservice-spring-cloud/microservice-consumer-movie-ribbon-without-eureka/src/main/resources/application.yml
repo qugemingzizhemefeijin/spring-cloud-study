@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: microservice-consumer-movie-ribbon-without-eureka
+server:
+  port: 8010
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+management:
+  security:
+    enabled: false #关闭actuator验证
+#不需要eureka注册的服务信息，而是指定了具体的访问服务
+ribbon:
+  eureka:
+    enabled: false
+microservice-provider-user:
+  ribbon:
+    listOfServers: localhost:7900
