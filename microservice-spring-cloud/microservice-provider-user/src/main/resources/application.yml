@@ -1,0 +1,39 @@
+#默认启动的时候在eureka控制台显示的是这样子的
+#UNKNOWN  n/a (1) (1) UP (1) - DESKTOP-9CKN135:7900
+#1.问题 将DESKTOP-9CKN135的链接地址换成IP 配置eureka.instance.prefer-ip-address=true
+#想更改显示名称则配置 eureka.instance.instance-id:${spring.application.name}:${spring.application.instance_id:${server.port}}
+#2.问题 UNKNOWN如何显示名称 只需要配置spring.application.name 即可
+server:
+  port: 7900
+spring:
+  jpa:
+    generate-ddl: false #启动的时候是否自动生成dll语句
+    show-sql: true
+    hibernate:
+      ddl-auto: none #jpa是依赖hibernate的，这里对hibernate也做配置，意思是启动的时候不做ddl语句的处理
+  datasource:
+    platform: h2
+    schema: #这个可以不用配置，默认就是classpath:schema.sql
+      - classpath:schema.sql
+    data: #这个上同
+      - classpath:data.sql
+  application:
+    name: microservice-provider-user #建议使用小写
+logging:
+  level:
+    root: info
+    #显示SQL语句，同时把参数打印出来，跟showsql有一定联系的。
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.tigerjoys: DEBUG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+management:
+  security:
+    enabled: false #关闭actuator验证
