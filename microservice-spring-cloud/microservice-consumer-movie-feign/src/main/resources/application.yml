@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: microservice-consumer-movie
+server:
+  port: 7901
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+management:
+  security:
+    enabled: false #关闭actuator验证
