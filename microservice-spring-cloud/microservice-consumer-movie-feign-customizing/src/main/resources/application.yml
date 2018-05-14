@@ -13,3 +13,6 @@ eureka:
 management:
   security:
     enabled: false #关闭actuator验证
+logging:
+  level:
+    com.tigerjoys.spring.cloud.client.UserFeignClient: DEBUG
