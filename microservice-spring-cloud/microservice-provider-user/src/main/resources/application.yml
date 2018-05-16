@@ -34,6 +34,11 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    #eureka metadata 可以自定义，启动了eureka服务后，将此项目启动，就可以在http://localhost:8761/eureka/apps/microservice-provider-user/ 下面找到配置的信息
+    metadata-map:
+      zone: ABC #这个是eureka可以识别的参数
+      jack-chan: CNN #这个是我自定义的参数，不会影响客户端行为
+    lease-renewal-interval-in-seconds: 20 #心跳的周期，默认30秒
 management:
   security:
     enabled: false #关闭actuator验证
