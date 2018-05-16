@@ -31,6 +31,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://user:password@localhost:8761/eureka
+      #高可用的eureka的话，此项目注册到peer1中后，会同步到peer2,peer3，但是生成环境的话，建议多配置几个eureka
+      #因为防止注册peer1的时候，peer1挂了，你连注册的机会都没了。
+      #http://peer1:8761/eureka,http://peer2:8762/eureka,http://peer3:8763/eureka
+      #defaultZone: http://peer1:8761/eureka
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
