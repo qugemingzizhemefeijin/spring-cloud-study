@@ -15,3 +15,6 @@ eureka:
     fetch-registry: false #上同 单机模式下关闭
     service-url:
       defaultZone: http://user:password@localhost:8761/eureka #将eureka注册到哪个server上
+  #dashboard:
+  #  enabled: true #禁用eureka首页，这样就访问不到管理界面了
+  #  path: /x
