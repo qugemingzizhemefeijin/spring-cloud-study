@@ -1,5 +1,8 @@
 package com.tigerjoys.spring.cloud.controller;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.common.collect.Lists;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.tigerjoys.spring.cloud.entity.User;
@@ -59,6 +63,29 @@ public class UserController {
 	@GetMapping("/test-user")
 	public User getUser(User user) {
 		return user;
+	}
+	
+	@GetMapping("/list-all")
+	public List<User> listAll(){
+		List<User> list = Lists.newArrayList();
+		
+		User user1 = new User();
+		user1.setAge((short)1);
+		user1.setBalance(new BigDecimal(10));
+		user1.setId(1L);
+		user1.setName("chen");
+		user1.setUsername("chen");
+		list.add(user1);
+		
+		User user2 = new User();
+		user2.setAge((short)3);
+		user2.setBalance(new BigDecimal(20));
+		user2.setId(2L);
+		user2.setName("li");
+		user2.setUsername("li");
+		list.add(user2);
+		
+		return list;
 	}
 
 }

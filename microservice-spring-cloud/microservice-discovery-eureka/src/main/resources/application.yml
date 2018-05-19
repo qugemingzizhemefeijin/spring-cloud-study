@@ -8,6 +8,13 @@ security:
 server:
   port: 8761
 eureka:
+  #配置eureka dashboard 左上角的 System Status 显示的内容
+  datacenter: cloud
+  environment: product
+  #如何解决Eureka Server 不踢出已关停的节点的问题？
+  #server:
+  #  enable-self-preservation: false #关闭自我保护机制
+  #  eviction-interval-timer-in-ms: 60000 #清理间隔(单位毫秒，默认是60*1000)
   client:
     healthcheck:
       enabled: true

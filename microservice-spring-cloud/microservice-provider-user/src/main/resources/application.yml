@@ -35,16 +35,19 @@ eureka:
       #因为防止注册peer1的时候，peer1挂了，你连注册的机会都没了。
       #http://peer1:8761/eureka,http://peer2:8762/eureka,http://peer3:8763/eureka
       #defaultZone: http://peer1:8761/eureka
+    #healthcheck:
+    #  enabled: true #开启健康检查，需要spring-boot-starter-actuator依赖
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
     #eureka metadata 可以自定义，启动了eureka服务后，将此项目启动，就可以在http://localhost:8761/eureka/apps/microservice-provider-user/ 下面找到配置的信息
     metadata-map:
       zone: ABC #这个是eureka可以识别的参数
       jack-chan: CNN #这个是我自定义的参数，不会影响客户端行为
     lease-renewal-interval-in-seconds: 20 #心跳的周期，默认30秒
-    appname: USER-SERVICE-HAHA #配置在eureka注册的名称，即eureka dashboard 中 Application显示的名称
+    #appname: USER-SERVICE-HAHA #配置在eureka注册的名称，即eureka dashboard 中 Application显示的名称
     #hostname: user 此功能是向eureka server注册的服务地址名称
+    lease-expiration-duration-in-seconds: 90 #租期到期时间
 management:
   security:
     enabled: false #关闭actuator验证
