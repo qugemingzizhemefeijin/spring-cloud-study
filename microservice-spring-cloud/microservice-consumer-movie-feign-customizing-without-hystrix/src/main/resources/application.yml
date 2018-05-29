@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: microservice-consumer-movie-feign-customizing-without-hystrix
+server:
+  port: 7901
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+management:
+  security:
+    enabled: false #关闭actuator验证
+logging:
+  level:
+    com.tigerjoys.spring.cloud.client.UserFeignClient: DEBUG
+#有时候某些机器可能使用feign访问服务的时候第一次会报超时，是因为feign内部使用了hystrix的超时机制，默认为1秒。
+#解决办法
+hystrix.command.default.execution.isolation.thread.timeoutInMillseconds: 5000
+#或者禁用超时时间
+#hystrix.command.default.execution.timeout.enabled: false
+feign.hystrix.enabled: true
