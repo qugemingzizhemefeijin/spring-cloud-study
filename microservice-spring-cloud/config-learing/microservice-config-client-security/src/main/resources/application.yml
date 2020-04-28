@@ -1,0 +1,6 @@
+server:
+  port: 8081
+
+# 先加载 bootstrap.yml配置 -> 加载远程配置 -> 加载本地applicaton.yml配置
+
+# 本地如果也配置了profile : abc，还是以远程为准，读取的信息还是profile-dev

@@ -1,6 +1,8 @@
+management:
+  port: 8081
 spring:
   application:
-    name: microservice-consumer-movie-ribbon-with-hystrix
+    name: microservice-consumer-movie-ribbon-with-hystrix3
 server:
   port: 8010
   context-path: /ribbon
@@ -14,7 +16,6 @@ eureka:
     prefer-ip-address: true
     home-page-url-path: /ribbon
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
-management:
-  security:
-    enabled: false #关闭actuator验证
+    metadata-map:
+      management.port: 8081
 hystrix.command.default.execution.isolation.thread.timeoutInMillseconds: 5000

@@ -1,0 +1,17 @@
+#如果要配置用户名和密码登录eureka，使用此写法，并且要在pom.xml中添加spring-boot-starter-security依赖
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: password
+server:
+  port: 8080
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/abc/abc #.git 后面的.git可以不需要
+#encrypt: #可能配置在application.yml中还是获取不到，那就需要配置在bootstrap.yml
+#  key: foo

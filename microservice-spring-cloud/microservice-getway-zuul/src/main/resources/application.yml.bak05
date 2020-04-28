@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: microservice-getway-zuul
+server:
+  port: 8040
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka #将eureka注册到哪个server上
+  instance:
+    prefer-ip-address: true
+zuul:
+  prefix: /api
+  strip-prefix: false #默认为true，就是是否需要在请求微服务的时候将/api去掉。否则请求的时候将带上此/api在url中。这个配置是全局的，也可以zuul.routes.serviceId来配置在某个服务下
+#  routes:
+#    users:
+#      path: /aaaa/**
+#    legacy: # users微服物上面配置，其它的为下面配置
+#      path: /**
+logging:
+  level:
+    com.netflix: debug

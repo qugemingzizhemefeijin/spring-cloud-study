@@ -21,10 +21,21 @@
 		<module>microservice-consumer-movie-ribbon-without-eureka</module>
 		<module>microservice-provider-user</module>
 		<module>microservice-discovery-eureka</module>
+		<module>microservice-getway-zuul</module>
+		<module>microservice-getway-zuul-reg-exp</module>
 		<module>microservice-hystrix-dashboard</module>
+		<module>microservice-hystrix-turbine</module>
+		<module>microservice-hystrix-turbine2</module>
+		<module>microservice-hystrix-turbine3</module>
 		<module>microservice-discovery-eureka-ha</module>
 		<module>microservice-consumer-movie-ribbon-with-hystrix</module>
+		<module>microservice-consumer-movie-ribbon-with-hystrix2</module>
+		<module>microservice-consumer-movie-ribbon-with-hystrix3</module>
 		<module>microservice-consumer-movie-ribbon-with-hystrix-propagation</module>
+		<module>microservice-file-upload</module>
+		<module>microservice-getway-zuul-fallback</module>
+		<module>microservice-sidecar</module>
+		<module>microservice-getway-zuul-filter</module>
 	</modules>
 
 	<parent>

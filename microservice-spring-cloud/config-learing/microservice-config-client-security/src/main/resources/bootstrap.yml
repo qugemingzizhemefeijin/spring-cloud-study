@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: foobar  #要跟远程配置上的文件名称一致
+  cloud:
+    config:
+      uri: http://user:password@localhost:8080  #curl style
+      #username: user # 这里如果都uri和username都配置了，则属性配置比uri的优先级高。为什么会有两种配置方式呢？
+      #password: abc
+      profile: production
+      label: master # 当configServer的后端存储是git的时候，默认就是master

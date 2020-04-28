@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: foobar  #要跟远程配置上的文件名称一致
+  cloud:
+    config:
+      uri: http://localhost:8080
+      profile: dev
+      label: master # 当configServer的后端存储是git的时候，默认就是master
+    bus:
+      enabled: true # 开启此开关才能在/trace中查看到刷新的消息跟踪
+  rabbitmq:
+    host: 1.1.1.1
+    port: 5672
+    username: guest
+    password: guest  #如果使用git的web hook来实现自动调用/bus/refresh
+    # /bus/refresh?destination=customers:port,customers:port来指定刷新，默认为applicationName:port
+    # /bus/refresh?destination=customers:** 来刷新某个指定业务

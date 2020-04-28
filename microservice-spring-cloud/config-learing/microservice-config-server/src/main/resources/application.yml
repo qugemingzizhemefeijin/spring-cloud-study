@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/abc/abc #.git 后面的.git可以不需要
+#encrypt: #可能配置在application.yml中还是获取不到，那就需要配置在bootstrap.yml
+#  key: foo

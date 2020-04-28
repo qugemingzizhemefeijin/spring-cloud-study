@@ -1,6 +1,6 @@
 spring:
   application:
-    name: microservice-consumer-movie-ribbon-with-hystrix
+    name: microservice-consumer-movie-ribbon-with-hystrix2
 server:
   port: 8010
   context-path: /ribbon

@@ -1,0 +1,31 @@
+server:
+  port: 8031
+spring:
+  application:
+    name: microservice-hystrix-turbine3
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 20 #心跳的周期，默认30秒
+    lease-expiration-duration-in-seconds: 90 #租期到期时间
+# 监控多个微服物的配置1
+#turbine:
+#  aggregator:
+#    clusterConfig: MICROSERVICE-CONSUMER-MOVIE-RIBBON-WITH-HYSTRIX,MICROSERVICE-CONSUMER-MOVIE-FEIGN-WITH-HYSTRIX
+#  app-config: microservice-consumer-movie-ribbon-with-hystrix,microservice-consumer-movie-feign-with-hystrix
+# 监控多个微服物的配置2
+turbine:
+  aggregator:
+    clusterConfig: MICROSERVICE-CONSUMER-MOVIE-RIBBON-WITH-HYSTRIX3
+  app-config: microservice-consumer-movie-ribbon-with-hystrix3
+# 当被监控的hystrix项目增加了contentPath，则需要这么配置，否则访问不到hystrix.stream，则无法使用turbine的监控功能。
+# turbine.instanceUrlSuffix.MICROSERVICE-CONSUMER-MOVIE-RIBBON-WITH-HYSTRIX2: /ribbon/hystrix.stream
+
+logging:
+  level:
+    root: INFO
+    com.netflix.turbine.monitor: DEBUG

@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/abc/abc
+          clone-on-start: true  #首次被请求的时候，将项目下载到本地
+          repos:
+            simple: 
+              uri: https://gitee.com/abc/simple
+            special:
+              pattern: special*/dev*,special*/test*
+              uri: https://gitee.com/abc/special
+              cloneOnStart: false

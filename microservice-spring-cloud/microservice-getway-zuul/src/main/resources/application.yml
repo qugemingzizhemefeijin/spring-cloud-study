@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: microservice-getway-zuul
+server:
+  port: 8040
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka #将eureka注册到哪个server上
+  instance:
+    prefer-ip-address: true
+management: 
+  security:
+    enabled: false #关闭actuator验证，关闭一些特殊的url的验证请求，直接开放url
+#zuul:
+#  sensitiveHeaders: #过滤掉一些头信息不要传递到上游服务中去
+
+#/zuul/microservice-file-upload/upload 可以绕过springmvc的dispatchservice限制，不用配置http maxfilesize等就可以上传文件到微服物而不会造成>10Mb的报错
+#在上传大文件的时候，可能会造成timeout，需要如下配置
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 6000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 6000

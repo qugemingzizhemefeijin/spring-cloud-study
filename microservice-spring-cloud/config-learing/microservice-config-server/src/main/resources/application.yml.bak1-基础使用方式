@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/abc/abc #.git 后面的.git可以不需要
+
+#http://localhost:8080/abc-default.properties abc可以随便写,default就是获取默认的配置
+
+#http请求地址和资源文件映射如下:
+#/{application}/{profile}[/{label}]
+#/{application}-{profile}.yml
+#/{label}/{application}-{profile}.yml
+#/{application}-{profile}.properties
+#/{label}/{application}-{profile}.properties
+
+# application = 项目名, profile=配置的环境名称,label是git的分支名
+
+
+#http://localhost:8080/foobar/dev/master #查看所有的配置

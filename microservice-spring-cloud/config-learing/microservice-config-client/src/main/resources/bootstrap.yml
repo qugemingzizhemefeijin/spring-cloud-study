@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: foobar  #要跟远程配置上的文件名称一致
+  cloud:
+    config:
+      uri: http://localhost:8080
+      profile: production
+      label: master # 当configServer的后端存储是git的时候，默认就是master

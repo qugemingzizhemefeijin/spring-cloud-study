@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: microservice-getway-zuul
+server:
+  port: 8040
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka #将eureka注册到哪个server上
+  instance:
+    prefer-ip-address: true
+zuul:
+  ignoredServices: '*' #忽略eureka上其他的微服物，还可以指定具体忽略的微服物名称
+  routes: #配置下面的代理映射
+    abc: #此值可以宿便写，只要是唯一的即可
+      path: /user-url/**
+      url: http://192.168.155.138:7900/

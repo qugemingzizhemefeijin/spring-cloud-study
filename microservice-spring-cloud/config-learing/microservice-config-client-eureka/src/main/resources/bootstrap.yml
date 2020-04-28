@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: foobar  #要跟远程配置上的文件名称一致
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: microservice-config-server-eureka
+      #username: # 可以配置config server的用户名
+      #password: # 可以配置config server的密码
+      
+eureka:
+  client:
+#    healthcheck:
+#      enabled: true #此配置只能配置在application.yml中，否则会有副作用，例如服务的注册状态是UNKNOWN。
+    serviceUrl:
+      defaultZone: http://user:password@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
