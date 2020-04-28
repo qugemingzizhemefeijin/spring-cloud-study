@@ -6,19 +6,16 @@ target/
 *.tar
 *.tar.gz
 
-# gradle ignore
-.gradle/
-gradle/
-out/
-
 # eclipse ignore
 .settings/
 .project
 .classpath
-build/
-.metadata/
-.recommenders/
-RemoteSystemsTempFiles/
+.externalToolBuilders
+bin/
+.factorypath
+.springBeans
+.metadata
+.recommenders
 
 # idea ignore
 .idea/
@@ -37,3 +34,5 @@ RemoteSystemsTempFiles/
 .DS_Store
 Thumbs.db
 
+#ios
+.apt_generated/
